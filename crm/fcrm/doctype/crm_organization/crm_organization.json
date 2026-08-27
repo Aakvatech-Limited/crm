@@ -8,6 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "organization_name",
+  "erpnext_customer",
   "no_of_employees",
   "currency",
   "exchange_rate",
@@ -30,6 +31,13 @@
    "in_standard_filter": 1,
    "label": "Organization Name",
    "unique": 1
+  },
+  {
+   "fieldname": "erpnext_customer",
+   "fieldtype": "Data",
+   "label": "Customer in ERPNext",
+   "read_only": 1,
+   "no_copy": 1
   },
   {
    "fieldname": "website",
