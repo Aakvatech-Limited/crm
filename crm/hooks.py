@@ -83,7 +83,7 @@ website_route_rules = [
 # website_generators = ["Web Page"]
 
 # Jinja
-# ----------
+# -----
 
 # add methods and filters to jinja environment
 # jinja = {
@@ -104,13 +104,13 @@ before_install = "crm.install.before_install"
 after_install = "crm.install.after_install"
 
 # Uninstallation
-# ------------
+# --------------
 
 before_uninstall = "crm.uninstall.before_uninstall"
 # after_uninstall = "crm.uninstall.after_uninstall"
 
 # Integration Setup
-# ------------------
+# -----------------
 # To set up dependencies/integrations with other apps
 # Name of the app being installed is passed as an argument
 
@@ -148,7 +148,7 @@ has_permission = {
 }
 
 # DocType Class
-# ---------------
+# -------------
 # Override standard doctype classes
 
 override_doctype_class = {
@@ -184,14 +184,10 @@ doc_events = {
 		"on_update": ["crm.api.whatsapp.on_update"],
 	},
 	"CRM Deal": {
-		"on_update": [
-			"crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings.create_customer_in_erpnext"
-		],
+		"on_update": ["crm.integrations.erpnext.customer.create_customer_in_erpnext"],
 	},
 	"Sales Order": {
-		"before_validate": [
-			"crm.fcrm.doctype.erpnext_crm_settings.erpnext_crm_settings.create_customer_on_sales_order"
-		],
+		"before_validate": ["crm.integrations.erpnext.customer.create_customer_on_sales_order"],
 	},
 	"Item": {
 		"after_insert": ["crm.integrations.erpnext.item.after_insert"],
@@ -247,7 +243,7 @@ scheduler_events = {
 before_tests = "crm.tests.before_tests"
 
 # Overriding Methods
-# ------------------------------
+# ------------------
 #
 # override_whitelisted_methods = {
 # "frappe.desk.doctype.event.event.get_events": "crm.event.get_events"
@@ -270,7 +266,7 @@ before_tests = "crm.tests.before_tests"
 ignore_links_on_delete = ["Failed Lead Sync Log"]
 
 # Request Events
-# ----------------
+# --------------
 # before_request = ["crm.utils.before_request"]
 # after_request = ["crm.utils.after_request"]
 
@@ -286,7 +282,7 @@ ignore_links_on_delete = ["Failed Lead Sync Log"]
 # {
 # "doctype": "{doctype_1}",
 # "filter_by": "{filter_by}",
-# "redact_fields": ["{field_1}", "{field_2}"],
+# "redact_fields": ["redact_fields"],
 # "partial": 1,
 # },
 # {
@@ -359,7 +355,6 @@ standard_dropdown_items = [
 		"name1": "logout",
 		"label": "Log out",
 		"type": "Route",
-		"icon": "log-out",
 		"route": "#",
 		"is_standard": 1,
 	},
